@@ -46,7 +46,7 @@ class UserController {
 
     async update(req: Request, res: Response): Promise<Response> {
         try {
-            const result = await userService.update();
+            const result = await userService.update(req.body, res.locals.userId);
             return res.status(201).json(result);
         } catch (e) {
             console.log(e);
@@ -54,15 +54,15 @@ class UserController {
         }
     }
 
-    async delete(req: Request, res: Response): Promise<Response> {
-        try {
-            const result = await userService.delete();
-            return res.status(201).json(result);
-        } catch (e) {
-            console.log(e);
-            return res.status(500).json(e);
-        }
-    }
+    // async delete(req: Request, res: Response): Promise<Response> {
+    //     try {
+    //         const result = await userService.delete(String(req.params.id), res.locals.userId);
+    //         return res.status(201).json(result);
+    //     } catch (e) {
+    //         console.log(e);
+    //         return res.status(500).json(e);
+    //     }
+    // }
 }
 
 export default UserController;

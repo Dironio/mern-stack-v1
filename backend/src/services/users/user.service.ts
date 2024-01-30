@@ -1,4 +1,4 @@
-import { CreateUserDto, GetUserDto, LoginUserDto } from "../../controllers/models/user.model";
+import { CreateUserDto, GetUserDto, LoginUserDto, UpdateUserDto } from "../../controllers/models/user.model";
 import { User, UserLogin, UserModel } from "../models/user.model";
 import bcrypt from 'bcrypt';
 import JWT from "jsonwebtoken";
@@ -65,13 +65,32 @@ class UserService {
         return user;
     }
 
-    async update(): Promise<User> {
+    async update(dto: UpdateUserDto, id: string): Promise<User | null> {
+        const user = await UserModel.findOneAndUpdate<User>(
+            { id: id },
+            { dto },
+            { new: true }
+        );
+
+        if (!user) {
+            console.log('пользователь не найден');
+            throw Error('Пользователь не найден');
+        }
+
+        return user;
 
     }
 
-    async delete(): Promise<User> {
+    // async delete(id: string, userId: string): Promise<User> {
+    //     const user = await UserModel.findOneAndDelete<User>();
 
-    }
+    //     if (!user) {
+    //         console.log('пользователь не найден');
+    //         throw Error('Пользователь не найден');
+    //     }
+
+    //     return user;
+    // }
 }
 
 const userService = new UserService;

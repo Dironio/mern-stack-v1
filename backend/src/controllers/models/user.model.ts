@@ -23,3 +23,11 @@ export interface GetUserDto {
     age?: number;
     roleId?: number;
 }
+
+export interface UpdateUserDto {
+    firstName?: string;
+    lastName?: string;
+    avatar?: string;
+    age?: number;
+    roleId?: number;
+}

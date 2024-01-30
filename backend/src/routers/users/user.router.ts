@@ -11,7 +11,7 @@ userRouter.get('/', userController.getAll);
 userRouter.get('/:id', userController.getOne);
 
 userRouter.patch('/', userController.update);
-userRouter.delete('/:id', userController.delete);
+// userRouter.delete('/:id', userController.delete);
 
 
 export default userRouter;
