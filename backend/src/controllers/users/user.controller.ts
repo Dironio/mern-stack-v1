@@ -26,7 +26,7 @@ class UserController {
 
     async getAll(req: Request, res: Response): Promise<Response> {
         try {
-            const result = await userService.getAll();
+            const result = await userService.getAll(req.query);
             return res.status(201).json(result);
         } catch (e) {
             console.log(e);
@@ -36,7 +36,7 @@ class UserController {
 
     async getOne(req: Request, res: Response): Promise<Response> {
         try {
-            const result = await userService.getOne();
+            const result = await userService.getOne(String(req.params.id));
             return res.status(201).json(result);
         } catch (e) {
             console.log(e);

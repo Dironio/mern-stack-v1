@@ -1,4 +1,4 @@
-import { CreateUserDto, LoginUserDto } from "../../controllers/models/user.model";
+import { CreateUserDto, GetUserDto, LoginUserDto } from "../../controllers/models/user.model";
 import { User, UserLogin, UserModel } from "../models/user.model";
 import bcrypt from 'bcrypt';
 import JWT from "jsonwebtoken";
@@ -55,12 +55,14 @@ class UserService {
 
 
 
-    async getAll(): Promise<User> {
-
+    async getAll(dto: GetUserDto): Promise<User[]> {
+        const users = await UserModel.find<User>(dto);
+        return users;
     }
 
-    async getOne(): Promise<User> {
-
+    async getOne(id: string): Promise<User | null> {
+        const user = await UserModel.findById<User>(id);
+        return user;
     }
 
     async update(): Promise<User> {
