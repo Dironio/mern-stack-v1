@@ -35,3 +35,8 @@ const userSchema = new mongoose.Schema<User>({
 });
 
 export const UserModel = model<User>('user', userSchema);
+
+export interface UserLogin {
+    token: string;
+    userId: string;
+}

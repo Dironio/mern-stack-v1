@@ -20,7 +20,7 @@ app.use('/api', router);
 
 async function start() {
     try {
-        await mongoose.connect(`${M_URL}`)
+        await mongoose.connect(String(M_URL))
             .then(() => console.log('MongoDB is connected'))
             .catch((e) => console.log('MongoDB error: ', e));
 

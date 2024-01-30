@@ -4,7 +4,7 @@ import userService from "../../services/users/user.service";
 class UserController {
     async auth(req: Request, res: Response): Promise<Response> {
         try {
-            const result = await userService.auth();
+            const result = await userService.auth(req.body);
             return res.status(201).json(result);
         } catch (e) {
             console.log(e);
@@ -14,7 +14,7 @@ class UserController {
 
     async login(req: Request, res: Response): Promise<Response> {
         try {
-            const result = await userService.login();
+            const result = await userService.login(req.body);
             return res.status(201).json(result);
         } catch (e) {
             console.log(e);
@@ -23,7 +23,7 @@ class UserController {
     }
 
 
-    
+
     async getAll(req: Request, res: Response): Promise<Response> {
         try {
             const result = await userService.getAll();

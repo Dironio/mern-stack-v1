@@ -7,3 +7,8 @@ export interface CreateUserDto {
     age?: number;
     roleId?: number;
 }
+
+export interface LoginUserDto {
+    email: string;
+    password: string;
+}
