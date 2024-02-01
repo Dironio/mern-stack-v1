@@ -68,7 +68,7 @@ class UserService {
     async update(dto: UpdateUserDto, id: string): Promise<User | null> {
         const user = await UserModel.findOneAndUpdate<User>(
             { id: id },
-            { dto },
+            { $set: dto },
             { new: true }
         );
 
@@ -82,7 +82,12 @@ class UserService {
     }
 
     // async delete(id: string, userId: string): Promise<User> {
-    //     const user = await UserModel.findOneAndDelete<User>();
+    //     const user = await UserModel.findOneAndDelete<User>(
+    //         {
+    //             id: id,
+    //             userId: userId
+    //         }
+    //     );
 
     //     if (!user) {
     //         console.log('пользователь не найден');

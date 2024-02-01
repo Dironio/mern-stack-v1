@@ -27,7 +27,7 @@ class UserController {
     async getAll(req: Request, res: Response): Promise<Response> {
         try {
             const result = await userService.getAll(req.query);
-            return res.status(201).json(result);
+            return res.status(200).json(result);
         } catch (e) {
             console.log(e);
             return res.status(500).json(e);
@@ -37,7 +37,7 @@ class UserController {
     async getOne(req: Request, res: Response): Promise<Response> {
         try {
             const result = await userService.getOne(String(req.params.id));
-            return res.status(201).json(result);
+            return res.status(200).json(result);
         } catch (e) {
             console.log(e);
             return res.status(500).json(e);
@@ -47,7 +47,7 @@ class UserController {
     async update(req: Request, res: Response): Promise<Response> {
         try {
             const result = await userService.update(req.body, res.locals.userId);
-            return res.status(201).json(result);
+            return res.status(200).json(result);
         } catch (e) {
             console.log(e);
             return res.status(500).json(e);
